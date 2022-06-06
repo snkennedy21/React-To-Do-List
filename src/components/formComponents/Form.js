@@ -1,16 +1,29 @@
 import "./Form.css";
 import { FaPlusSquare } from "react-icons/fa";
+import { useState } from "react";
 
-const Form = function () {
+const Form = function (props) {
+  const [enteredTask, setEnteredTask] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+
   const taskChangeHandler = function (e) {
-    console.log(e.target.value);
+    setEnteredTask(e.target.value);
   };
 
   const dateChangeHandler = function (e) {
-    console.log(e.target.value);
+    setEnteredDate(e.target.value);
   };
 
-  const formSubmitHandler = function () {};
+  const formSubmitHandler = function (e) {
+    e.preventDefault();
+
+    const taskData = {
+      taskName: enteredTask,
+      completionDate: enteredDate,
+    };
+
+    props.onSaveTaskData(taskData);
+  };
 
   return (
     <div className="form__container">
