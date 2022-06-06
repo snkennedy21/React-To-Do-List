@@ -1,0 +1,50 @@
+.list__element {
+  display: flex;
+  background-color: var(--color-white);
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.list__element__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list__element__task {
+  font-size: 2.2rem;
+  color: var(--color-black);
+}
+
+.list__button__container {
+  display: flex;
+  gap: 1rem;
+}
+
+.list__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  color: var(--color-white);
+}
+
+.list__button:hover {
+  cursor: pointer;
+}
+
+.list__button--check {
+  background-color: green;
+}
+
+.list__button--delete {
+  background-color: red;
+}
+
+.list__button--edit {
+  background-color: blue;
+}
