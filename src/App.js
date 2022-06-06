@@ -1,5 +1,6 @@
 import "./App.css";
 import List from "./components/listComponents/List";
+import Form from "./components/formComponents/Form";
 
 function App() {
   const toDoItems = [
@@ -15,6 +16,7 @@ function App() {
         <div className="header__container">
           <header className="header">To Do List</header>
         </div>
+        <Form></Form>
         <List toDoItems={toDoItems}></List>
       </section>
     </div>
