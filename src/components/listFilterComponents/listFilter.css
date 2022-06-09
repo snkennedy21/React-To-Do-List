@@ -1,0 +1,10 @@
+.list-filter__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.list-filter__label {
+  font-size: 3rem;
+  color: black;
+}

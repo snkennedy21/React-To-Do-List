@@ -59,3 +59,22 @@
 .form__button:hover {
   cursor: pointer;
 }
+
+.form__select__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form__select__button__container {
+  display: flex;
+  gap: 2rem;
+}
+
+.form__radio__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}

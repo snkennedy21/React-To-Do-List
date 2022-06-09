@@ -18,8 +18,9 @@ const Form = function (props) {
     e.preventDefault();
 
     const taskData = {
+      id: Math.random().toString(),
       taskName: enteredTask,
-      completionDate: enteredDate,
+      completionDate: new Date(enteredDate),
     };
 
     props.onSaveTaskData(taskData);
