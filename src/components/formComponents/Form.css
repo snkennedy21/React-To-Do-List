@@ -72,7 +72,12 @@
   gap: 2rem;
 }
 
-.form__radio__container {
+.form__input__priorities__container {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form__input__radio__container {
   display: flex;
   flex-direction: column;
   align-items: center;

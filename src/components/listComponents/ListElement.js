@@ -6,6 +6,7 @@ const ListElement = function (props) {
   const month = props.date.toLocaleString("en-US", { month: "long" });
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const [task, setTask] = useState(props.task);
+  const [priority, setPriority] = useState(props.priority);
 
   const editTaskHandler = function () {
     setTask("Changed");
@@ -16,6 +17,7 @@ const ListElement = function (props) {
       <div className="list__element__item">
         <div className="list__element__task">{task}</div>
         <div className="list__element__date">{`${month} ${day}`}</div>
+        <div className="list__element__priority">Priority: {priority}</div>
       </div>
       <div className="list__button__container">
         <button className="list__button list__button--check">

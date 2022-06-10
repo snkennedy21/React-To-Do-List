@@ -3,4 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  height: calc(100% - 100px);
 }
