@@ -27,7 +27,7 @@ function App() {
       id: "e4",
       taskName: "Pay Taxes",
       completionDate: new Date(2022, 7, 10),
-      priorityLevel: "High",
+      priorityLevel: "Medium",
     },
   ];
   const [list, setList] = useState(toDoItems);

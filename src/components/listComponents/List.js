@@ -14,19 +14,21 @@ const List = function (props) {
     (el) => el.priorityLevel === priorityLevel
   );
 
+  let listContent = <p>You have no taks for selected priority level</p>;
+
+  if (filteredList.length > 0)
+    listContent = filteredList.map((el) => (
+      <ListElement
+        key={el.id}
+        task={el.taskName}
+        date={el.completionDate}
+        priority={el.priorityLevel}
+      />
+    ));
   return (
     <div>
       <ListFilter onSaveFilterData={saveFilterDataHandler}></ListFilter>
-      <div className="list">
-        {filteredList.map((el) => (
-          <ListElement
-            key={el.id}
-            task={el.taskName}
-            date={el.completionDate}
-            priority={el.priorityLevel}
-          />
-        ))}
-      </div>
+      <div className="list">{listContent}</div>
     </div>
   );
 };
