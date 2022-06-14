@@ -6,6 +6,12 @@
   align-items: center;
   width: 100%;
   border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.list__element.completed {
+  opacity: 0.8;
+  transform: scale(0.95);
 }
 
 .list__element__item {

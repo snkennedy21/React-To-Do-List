@@ -1,4 +1,4 @@
-import "./ListElement.css";
+import styles from "./ListElement.module.css";
 import React, { useState } from "react";
 import { FaTrashAlt, FaCheck, FaEdit } from "react-icons/fa";
 
@@ -7,29 +7,48 @@ const ListElement = function (props) {
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const [task, setTask] = useState(props.task);
   const [priority, setPriority] = useState(props.priority);
+  const [taskCompleted, setTaskCompleted] = useState(false);
 
   const editTaskHandler = function () {
     setTask("Changed");
   };
 
+  const completeTaskHandler = function () {
+    if (taskCompleted) setTaskCompleted(false);
+    if (!taskCompleted) setTaskCompleted(true);
+  };
+
   return (
-    <div className="list__element">
-      <div className="list__element__item">
-        <div className="list__element__task">{task}</div>
-        <div className="list__element__date">{`${month} ${day}`}</div>
-        <div className="list__element__priority">Priority: {priority}</div>
+    <div
+      className={`${styles["list__element"]} ${
+        taskCompleted ? styles.completed : ""
+      }`}
+    >
+      <div className={`${styles["list__element__item"]}`}>
+        <div className={`${styles["list__element__task"]}`}>{task}</div>
+        <div
+          className={`${styles["list__element__date"]}`}
+        >{`${month} ${day}`}</div>
+        <div className={`${styles["list__element__priority"]}`}>
+          Priority: {priority}
+        </div>
       </div>
-      <div className="list__button__container">
-        <button className="list__button list__button--check">
+      <div className={`${styles["list__button__container"]}`}>
+        <button
+          onClick={completeTaskHandler}
+          className={`${styles["list__button"]} ${styles["list__button--check"]}`}
+        >
           <FaCheck></FaCheck>
         </button>
         <button
           onClick={editTaskHandler}
-          className="list__button list__button--edit"
+          className={`${styles["list__button"]} ${styles["list__button--edit"]}`}
         >
           <FaEdit></FaEdit>
         </button>
-        <button className="list__button list__button--delete">
+        <button
+          className={`${styles["list__button"]} ${styles["list__button--delete"]}`}
+        >
           <FaTrashAlt></FaTrashAlt>
         </button>
       </div>
