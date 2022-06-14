@@ -4,17 +4,21 @@ import "./List.css";
 import ListFilter from "./ListFilter";
 
 const List = function (props) {
-  const [priorityLevel, setPriorityLevel] = useState("Low");
+  const [priorityLevel, setPriorityLevel] = useState("All");
 
   const saveFilterDataHandler = function (selectedFilterValue) {
     setPriorityLevel(selectedFilterValue);
   };
 
-  const filteredList = props.toDoItems.filter(
-    (el) => el.priorityLevel === priorityLevel
-  );
+  let filteredList;
+  if (priorityLevel === "All") filteredList = props.toDoItems;
+  if (priorityLevel !== "All") {
+    filteredList = props.toDoItems.filter(
+      (el) => el.priorityLevel === priorityLevel
+    );
+  }
 
-  let listContent = <p>You have no taks for selected priority level</p>;
+  let listContent = <p>You have no taks for this selected priority level</p>;
 
   if (filteredList.length > 0)
     listContent = filteredList.map((el) => (

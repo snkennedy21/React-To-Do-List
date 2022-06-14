@@ -11,9 +11,10 @@ const ListFilter = function (props) {
       <div className="list-filter">
         <label className="list-filter__label">Filter</label>
         <select onChange={filterChangeHandler} className="list-filter__select">
-          <option value="High">High Priority</option>
-          <option value="Medium">Medium Priority</option>
+          <option value="All">All Tasks</option>
           <option value="Low">Low Priority</option>
+          <option value="Medium">Medium Priority</option>
+          <option value="High">High Priority</option>
         </select>
       </div>
     </div>

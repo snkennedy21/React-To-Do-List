@@ -24,6 +24,16 @@
   border-radius: 0.5rem;
 }
 
+.form__input--text.invalid {
+  border: 1px solid red;
+  color: red;
+  background-color: rgb(243, 192, 192);
+}
+
+.form__input--text.invalid::placeholder {
+  color: red;
+}
+
 .form__input--date {
   background-color: var(--color-white);
   height: 4rem;
@@ -31,6 +41,16 @@
   font-size: 2.4rem;
   border: 1px solid black;
   border-radius: 0.5rem;
+}
+
+.form__input--date.invalid {
+  border: 1px solid red;
+  color: red;
+  background-color: rgb(243, 192, 192);
+}
+
+.form__input--date.invalid::placeholder {
+  color: red;
 }
 
 .form__input--text:focus {
@@ -75,6 +95,10 @@
 .form__input__priorities__container {
   display: flex;
   gap: 1.5rem;
+}
+
+.form__input__priorities__container.invalid {
+  border: 1px solid red;
 }
 
 .form__input__radio__container {
