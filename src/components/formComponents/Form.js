@@ -10,16 +10,31 @@ const Form = function (props) {
   const [dateIsFilledOut, setDateIsFilledOut] = useState(true);
   const [priorityIsfilledOut, setPriorityIsFilledOut] = useState(true);
 
+  const removeFormErrorColor = function () {
+    setTaskIsFilledOut(true);
+    setDateIsFilledOut(true);
+    setPriorityIsFilledOut(true);
+  };
+
   const taskChangeHandler = function (e) {
     setEnteredTask(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      removeFormErrorColor();
+    }
   };
 
   const dateChangeHandler = function (e) {
     setEnteredDate(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      removeFormErrorColor();
+    }
   };
 
   const priorityChangeHandler = function (e) {
     setEnteredPriority(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      removeFormErrorColor();
+    }
   };
 
   const formSubmitHandler = function (e) {
