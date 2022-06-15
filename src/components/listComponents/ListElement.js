@@ -1,16 +1,20 @@
 import styles from "./ListElement.module.css";
 import React, { useState } from "react";
 import { FaTrashAlt, FaCheck, FaEdit } from "react-icons/fa";
+import EditTaskForm from "../formComponents/EditTaskForm";
 
 const ListElement = function (props) {
   const month = props.date.toLocaleString("en-US", { month: "long" });
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  const [task, setTask] = useState(props.task);
+  const [formIsOpen, setFormIsOpen] = useState(false);
   const [priority, setPriority] = useState(props.priority);
   const [taskCompleted, setTaskCompleted] = useState(false);
 
-  const editTaskHandler = function () {
-    setTask("Changed");
+  const openFormHandler = function () {
+    setFormIsOpen(true);
+  };
+  const closeFormHandler = function () {
+    setFormIsOpen(false);
   };
 
   const completeTaskHandler = function () {
@@ -20,38 +24,44 @@ const ListElement = function (props) {
 
   return (
     <div
-      className={`${styles["list__element"]} ${
+      className={`${styles["list__element-container"]} ${
         taskCompleted ? styles.completed : ""
       }`}
     >
-      <div className={`${styles["list__element__item"]}`}>
-        <div className={`${styles["list__element__task"]}`}>{task}</div>
-        <div
-          className={`${styles["list__element__date"]}`}
-        >{`${month} ${day}`}</div>
-        <div className={`${styles["list__element__priority"]}`}>
-          Priority: {priority}
+      <div className={`${styles["list__element"]}`}>
+        <div className={`${styles["list__element__item"]}`}>
+          <div className={`${styles["list__element__task"]}`}>{props.task}</div>
+          <div
+            className={`${styles["list__element__date"]}`}
+          >{`${month} ${day}`}</div>
+          <div className={`${styles["list__element__priority"]}`}>
+            Priority: {priority}
+          </div>
+        </div>
+        <div className={`${styles["list__button__container"]}`}>
+          <button
+            onClick={completeTaskHandler}
+            className={`${styles["list__button"]} ${styles["list__button--check"]}`}
+          >
+            <FaCheck></FaCheck>
+          </button>
+          <button
+            onClick={openFormHandler}
+            className={`${styles["list__button"]} ${styles["list__button--edit"]}`}
+          >
+            <FaEdit></FaEdit>
+          </button>
+          <button
+            className={`${styles["list__button"]} ${styles["list__button--delete"]}`}
+          >
+            <FaTrashAlt></FaTrashAlt>
+          </button>
         </div>
       </div>
-      <div className={`${styles["list__button__container"]}`}>
-        <button
-          onClick={completeTaskHandler}
-          className={`${styles["list__button"]} ${styles["list__button--check"]}`}
-        >
-          <FaCheck></FaCheck>
-        </button>
-        <button
-          onClick={editTaskHandler}
-          className={`${styles["list__button"]} ${styles["list__button--edit"]}`}
-        >
-          <FaEdit></FaEdit>
-        </button>
-        <button
-          className={`${styles["list__button"]} ${styles["list__button--delete"]}`}
-        >
-          <FaTrashAlt></FaTrashAlt>
-        </button>
-      </div>
+      <EditTaskForm
+        closeForm={closeFormHandler}
+        formIsOpen={formIsOpen}
+      ></EditTaskForm>
     </div>
   );
 };

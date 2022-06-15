@@ -1,0 +1,119 @@
+.form__container {
+  display: flex;
+}
+
+.form__container.hidden {
+  display: none;
+}
+
+.form {
+  width: 100%;
+  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-white);
+  gap: 2rem;
+  border-radius: 0.5rem;
+}
+
+.form__input--text {
+  background-color: var(--color-white);
+  width: 50%;
+  height: 4rem;
+  font-size: 2.4rem;
+  padding-left: 1rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+
+.form__input--text.invalid {
+  border: 1px solid red;
+  color: red;
+  background-color: rgb(243, 192, 192);
+}
+
+.form__input--text.invalid::placeholder {
+  color: red;
+}
+
+.form__input--date {
+  background-color: var(--color-white);
+  height: 4rem;
+  padding-left: 1rem;
+  font-size: 2.4rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+
+.form__input--date.invalid {
+  border: 1px solid red;
+  color: red;
+  background-color: rgb(243, 192, 192);
+}
+
+.form__input--date.invalid::placeholder {
+  color: red;
+}
+
+.form__input--text:focus {
+  outline: none;
+}
+
+.form__button-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.form__button__icon {
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-white);
+}
+
+.form__button__icon.close {
+  color: red;
+}
+
+.form__button__icon.update {
+  color: green;
+}
+
+.form__button:hover {
+  cursor: pointer;
+}
+
+.form__select__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form__select__button__container {
+  display: flex;
+  gap: 2rem;
+}
+
+.form__input__priorities__container {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form__input__priorities__container.invalid {
+  border: 1px solid red;
+}
+
+.form__input__radio__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}

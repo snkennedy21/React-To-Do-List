@@ -1,3 +1,10 @@
+.list__element-container {
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
 .list__element {
   display: flex;
   background-color: var(--color-white);
@@ -6,10 +13,9 @@
   align-items: center;
   width: 100%;
   border-radius: 0.5rem;
-  transition: all 0.3s ease;
 }
 
-.list__element.completed {
+.list__element-container.completed {
   opacity: 0.8;
   transform: scale(0.95);
 }
@@ -55,4 +61,8 @@
 
 .list__button--edit {
   background-color: blue;
+}
+
+.edit-task-form {
+  display: none;
 }

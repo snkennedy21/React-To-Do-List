@@ -69,8 +69,6 @@ const Form = function (props) {
     setEnteredPriority("");
   };
 
-  console.log(priorityIsfilledOut);
-
   return (
     <div className={`${styles["form__container"]}`}>
       <form onSubmit={formSubmitHandler} className={`${styles["form"]}`}>
