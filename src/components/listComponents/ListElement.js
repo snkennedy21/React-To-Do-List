@@ -4,11 +4,24 @@ import { FaTrashAlt, FaCheck, FaEdit } from "react-icons/fa";
 import EditTaskForm from "../formComponents/EditTaskForm";
 
 const ListElement = function (props) {
-  const month = props.date.toLocaleString("en-US", { month: "long" });
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const [formIsOpen, setFormIsOpen] = useState(false);
-  const [priority, setPriority] = useState(props.priority);
   const [taskCompleted, setTaskCompleted] = useState(false);
+
+  const [task, setTask] = useState(props.task);
+  const [month, setMonth] = useState(
+    props.date.toLocaleString("en-US", { month: "long" })
+  );
+  const [day, setDay] = useState(
+    props.date.toLocaleString("en-US", { day: "2-digit" })
+  );
+  const [priority, setPriority] = useState(props.priority);
+
+  const updateTaskHandler = function (updatedTask) {
+    setTask(updatedTask.taskName);
+    setDay(updatedTask.day);
+    setMonth(updatedTask.month);
+    setPriority(updatedTask.priorityLevel);
+  };
 
   const openFormHandler = function () {
     setFormIsOpen(true);
@@ -30,7 +43,7 @@ const ListElement = function (props) {
     >
       <div className={`${styles["list__element"]}`}>
         <div className={`${styles["list__element__item"]}`}>
-          <div className={`${styles["list__element__task"]}`}>{props.task}</div>
+          <div className={`${styles["list__element__task"]}`}>{task}</div>
           <div
             className={`${styles["list__element__date"]}`}
           >{`${month} ${day}`}</div>
@@ -61,6 +74,7 @@ const ListElement = function (props) {
       <EditTaskForm
         closeForm={closeFormHandler}
         formIsOpen={formIsOpen}
+        updateTask={updateTaskHandler}
       ></EditTaskForm>
     </div>
   );
