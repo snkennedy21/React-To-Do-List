@@ -97,6 +97,7 @@ const Form = function (props) {
           <div className={`${styles["form__input__radio__container"]}`}>
             <label>Low</label>
             <input
+              checked={enteredPriority === "Low"}
               onChange={priorityChangeHandler}
               name="priority"
               type="radio"
@@ -106,6 +107,7 @@ const Form = function (props) {
           <div className={`${styles["form__input__radio__container"]}`}>
             <label>Medium</label>
             <input
+              checked={enteredPriority === "Medium"}
               onChange={priorityChangeHandler}
               name="priority"
               type="radio"
@@ -115,6 +117,7 @@ const Form = function (props) {
           <div className={`${styles["form__input__radio__container"]}`}>
             <label>High</label>
             <input
+              checked={enteredPriority === "High"}
               onChange={priorityChangeHandler}
               name="priority"
               type="radio"

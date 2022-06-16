@@ -24,9 +24,11 @@ const List = function (props) {
     listContent = filteredList.map((el) => (
       <ListElement
         key={el.id}
+        id={el.id}
         task={el.taskName}
         date={el.completionDate}
         priority={el.priorityLevel}
+        deleteTask={props.deleteTask}
       />
     ));
   return (

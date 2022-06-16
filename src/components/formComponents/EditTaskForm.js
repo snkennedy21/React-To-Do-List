@@ -7,15 +7,27 @@ const EditTaskForm = function (props) {
   const [enteredTask, setEnteredTask] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredPriority, setEnteredPriority] = useState("");
+  const [taskIsFilledOut, setTaskIsFilledOut] = useState(true);
+  const [dateIsFilledOut, setDateIsFilledOut] = useState(true);
+  const [priorityIsfilledOut, setPriorityIsFilledOut] = useState(true);
+
+  const removeFormErrorColor = function () {
+    setTaskIsFilledOut(true);
+    setDateIsFilledOut(true);
+    setPriorityIsFilledOut(true);
+  };
 
   const taskChangeHandler = function (e) {
     setEnteredTask(e.target.value);
+    if (e.target.value.trim().length > 0) removeFormErrorColor();
   };
   const dateChangeHandler = function (e) {
     setEnteredDate(e.target.value);
+    if (e.target.value.trim().length > 0) removeFormErrorColor();
   };
   const priorityChangeHandler = function (e) {
     setEnteredPriority(e.target.value);
+    if (e.target.value.trim().length > 0) removeFormErrorColor();
   };
 
   const closeFormHandler = function (e) {
@@ -24,6 +36,18 @@ const EditTaskForm = function (props) {
   };
 
   const formSubmitHandler = function (e) {
+    e.preventDefault();
+    if (enteredTask.trim().length === 0) setTaskIsFilledOut(false);
+    if (enteredDate.trim().length === 0) setDateIsFilledOut(false);
+    if (enteredPriority.trim().length === 0) setPriorityIsFilledOut(false);
+
+    if (
+      enteredTask.trim().length === 0 ||
+      enteredDate.trim().length === 0 ||
+      enteredPriority.trim().length === 0
+    ) {
+      return;
+    }
     e.preventDefault();
     const completionDate = new Date(enteredDate);
     console.log(enteredDate);
@@ -50,18 +74,26 @@ const EditTaskForm = function (props) {
       <form onSubmit={formSubmitHandler} className={`${styles["form"]}`}>
         <input
           onChange={taskChangeHandler}
-          className={`${styles["form__input--text"]}`}
+          className={`${styles["form__input--text"]} ${
+            taskIsFilledOut ? "" : styles.invalid
+          }`}
           type="text"
           placeholder="Edit Task"
           value={enteredTask}
         />
         <input
           onChange={dateChangeHandler}
-          className={`${styles["form__input--date"]}`}
+          className={`${styles["form__input--date"]} ${
+            dateIsFilledOut ? "" : styles.invalid
+          }`}
           type="date"
           value={enteredDate}
         />
-        <div className={`${styles["form__input__priorities__container"]}`}>
+        <div
+          className={`${styles["form__input__priorities__container"]} ${
+            priorityIsfilledOut ? "" : styles.invalid
+          }`}
+        >
           <div className={`${styles["form__input__radio__container"]}`}>
             <label>Low</label>
             <input

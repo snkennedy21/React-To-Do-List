@@ -38,6 +38,15 @@ function App() {
     });
   };
 
+  const deleteTaskHandler = function (selectedTaskID) {
+    setList((prevItems) => {
+      const updatedTasks = prevItems.filter(
+        (item) => item.id !== selectedTaskID
+      );
+      return updatedTasks;
+    });
+  };
+
   return (
     <div className="application__container">
       <section className="application__section">
@@ -45,7 +54,7 @@ function App() {
           <header className="header">To Do List</header>
         </div>
         <Form onSaveTaskData={saveTaskDataHandler}></Form>
-        <List toDoItems={list}></List>
+        <List deleteTask={deleteTaskHandler} toDoItems={list}></List>
       </section>
     </div>
   );

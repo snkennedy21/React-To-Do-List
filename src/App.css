@@ -7,6 +7,7 @@
 .application__section {
   width: 80rem;
   min-height: 50rem;
+  margin: 3rem;
 }
 
 .header__container {

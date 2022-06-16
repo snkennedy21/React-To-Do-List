@@ -16,7 +16,7 @@
 }
 
 .list__element-container.completed {
-  opacity: 0.8;
+  opacity: 0.7;
   transform: scale(0.95);
 }
 
@@ -65,4 +65,14 @@
 
 .edit-task-form {
   display: none;
+}
+
+.priority-level.high {
+  color: red;
+}
+.priority-level.medium {
+  color: yellow;
+}
+.priority-level.low {
+  color: green;
 }

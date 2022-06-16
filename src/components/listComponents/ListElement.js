@@ -30,6 +30,10 @@ const ListElement = function (props) {
     setFormIsOpen(false);
   };
 
+  const deleteTaskHandler = function () {
+    props.deleteTask(props.id);
+  };
+
   const completeTaskHandler = function () {
     if (taskCompleted) setTaskCompleted(false);
     if (!taskCompleted) setTaskCompleted(true);
@@ -48,7 +52,8 @@ const ListElement = function (props) {
             className={`${styles["list__element__date"]}`}
           >{`${month} ${day}`}</div>
           <div className={`${styles["list__element__priority"]}`}>
-            Priority: {priority}
+            Priority:
+            <span className={`${styles["priority-level"]}`}> {priority}</span>
           </div>
         </div>
         <div className={`${styles["list__button__container"]}`}>
@@ -65,6 +70,7 @@ const ListElement = function (props) {
             <FaEdit></FaEdit>
           </button>
           <button
+            onClick={deleteTaskHandler}
             className={`${styles["list__button"]} ${styles["list__button--delete"]}`}
           >
             <FaTrashAlt></FaTrashAlt>
