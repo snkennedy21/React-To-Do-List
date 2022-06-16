@@ -50,19 +50,25 @@ const EditTaskForm = function (props) {
     }
     e.preventDefault();
     const completionDate = new Date(enteredDate);
-    console.log(enteredDate);
     const updatedTask = {
       taskName: enteredTask,
       month: completionDate.toLocaleString("en-US", { month: "long" }),
       day: completionDate.toLocaleString("en-US", { day: "2-digit" }),
       priorityLevel: enteredPriority,
     };
-    console.log(updatedTask);
+
+    const updatedTaskData = {
+      taskName: enteredTask,
+      completionDate: new Date(enteredDate),
+      priorityLevel: enteredPriority,
+      id: props.id,
+    };
     props.updateTask(updatedTask);
     setEnteredTask("");
     setEnteredDate("");
     setEnteredPriority("");
     props.closeForm();
+    props.updateTaskData(updatedTaskData);
   };
 
   return (

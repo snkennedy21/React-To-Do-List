@@ -47,6 +47,15 @@ function App() {
     });
   };
 
+  const updateTaskDataHandler = function (updatedTaskData) {
+    setList((prevItems) => {
+      prevItems.forEach((el, i) => {
+        if (el.id === updatedTaskData.id) prevItems[i] = updatedTaskData;
+      });
+      return [...prevItems];
+    });
+  };
+
   return (
     <div className="application__container">
       <section className="application__section">
@@ -54,7 +63,11 @@ function App() {
           <header className="header">To Do List</header>
         </div>
         <Form onSaveTaskData={saveTaskDataHandler}></Form>
-        <List deleteTask={deleteTaskHandler} toDoItems={list}></List>
+        <List
+          updateTaskData={updateTaskDataHandler}
+          deleteTask={deleteTaskHandler}
+          toDoItems={list}
+        ></List>
       </section>
     </div>
   );

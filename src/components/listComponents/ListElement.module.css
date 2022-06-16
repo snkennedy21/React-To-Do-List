@@ -67,12 +67,16 @@
   display: none;
 }
 
-.priority-level.high {
+.priority-level {
+  font-weight: 800;
+}
+
+.priority-level.High {
   color: red;
 }
-.priority-level.medium {
-  color: yellow;
+.priority-level.Medium {
+  color: orange;
 }
-.priority-level.low {
+.priority-level.Low {
   color: green;
 }

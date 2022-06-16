@@ -18,7 +18,11 @@ const List = function (props) {
     );
   }
 
-  let listContent = <p>You have no taks for this selected priority level</p>;
+  let listContent = (
+    <p className="no-task-text">
+      You have no taks for this selected priority level
+    </p>
+  );
 
   if (filteredList.length > 0)
     listContent = filteredList.map((el) => (
@@ -29,6 +33,7 @@ const List = function (props) {
         date={el.completionDate}
         priority={el.priorityLevel}
         deleteTask={props.deleteTask}
+        updateTaskData={props.updateTaskData}
       />
     ));
   return (

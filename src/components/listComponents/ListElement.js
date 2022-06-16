@@ -53,7 +53,14 @@ const ListElement = function (props) {
           >{`${month} ${day}`}</div>
           <div className={`${styles["list__element__priority"]}`}>
             Priority:
-            <span className={`${styles["priority-level"]}`}> {priority}</span>
+            <span
+              className={`${styles["priority-level"]} ${
+                styles[props.priority]
+              }`}
+            >
+              {" "}
+              {priority}
+            </span>
           </div>
         </div>
         <div className={`${styles["list__button__container"]}`}>
@@ -81,6 +88,8 @@ const ListElement = function (props) {
         closeForm={closeFormHandler}
         formIsOpen={formIsOpen}
         updateTask={updateTaskHandler}
+        updateTaskData={props.updateTaskData}
+        id={props.id}
       ></EditTaskForm>
     </div>
   );
